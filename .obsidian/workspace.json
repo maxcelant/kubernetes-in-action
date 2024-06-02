@@ -1,0 +1,155 @@
+{
+  "main": {
+    "id": "4e077bcddb01d5c9",
+    "type": "split",
+    "children": [
+      {
+        "id": "5f97da9f32cf2b93",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7e7ab9663a272ceb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "6 - Volumes：attaching disk storage to containers.md",
+                "mode": "preview",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "cd8795aa2d676be2",
+    "type": "split",
+    "children": [
+      {
+        "id": "e001783375ac5ae8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e72e6fc764830904",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "857223fb7b3e484a",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "d20272f8cf65c788",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "590c3922239a6bcb",
+    "type": "split",
+    "children": [
+      {
+        "id": "e639187caf591fc6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9f391a1f81073697",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "6 - Volumes：attaching disk storage to containers.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "3a9a424bbb3f1314",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "6 - Volumes：attaching disk storage to containers.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "3b5d075992ec18fd",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "9e24db70ca03872f",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "6 - Volumes：attaching disk storage to containers.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "7e7ab9663a272ceb",
+  "lastOpenFiles": [
+    "5 - Services：enabling clients to discover and talk to pods.md",
+    "images/Pasted image 20240517223818.png",
+    "images"
+  ]
+}
