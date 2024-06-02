@@ -1,9 +1,15 @@
+### Summary
+- You can use the `downwardAPI` to get metadata about the Pod's environment through a volume or environment vars.'
+- You can speak to the Kubernetes API from a Pod through a proxy.
+- You can also authenticate and/or use an ambassador to communicate with it.
+- For more complex tasks, you can use a dedicated kubernetes client.
+
 ### Intro to the Downward API
-- The downward api allows us to send metadata about the pod and its environment through env variables or files (using downwardAPI volume).
+- The downward api allows us to send metadata about the pod and its environment through env variables or files (using `downwardAPI` volume).
 - The downwardAPI is _not_ a REST endpoint that can be hit. Its just metadata about the environment which can be reached using env variables or volumes.
 
 ### Exposing metadata through env variables
-- These are just a few things that can be looked at from the downwardAPI.
+- These are just a few things that can be looked at from the `downwardAPI`.
 - `annotations` and `labels` cannot be exposed through environment variables because they can't be changed while the pod is alive.
 ```yaml
 apiVersion: v1
@@ -106,3 +112,15 @@ KUBERNETES_SERVICE_PORT_HTTPS=443
 - To verify you are talking to the API server, you need to check if the server's cert is signed by the CA.
 - The `ca.cert`, `token` and `namespace` can all be found in a secret volume attached to every Pod.
 - `namespace` contains the namespace that the Pod is running in.
+
+>![[Pasted image 20240602174900.png]]
+
+### Using an ambassador container
+- You can use this to communicate with the k8s API securely.
+- You run an ambassador container along side your app container and connect your app to it. Then let the ambassador talk to the API server.
+- `kubectl proxy` binds to port 8001. Since both containers share a [[Loopback and Network Interface|network interface]], this works!
+
+>![[Pasted image 20240602180520.png]]
+
+### Using a client library
+- If you plan on doing more than simple API requests, its better to use a dedicated k8s API client library.
