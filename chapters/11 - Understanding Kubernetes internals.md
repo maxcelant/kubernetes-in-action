@@ -24,3 +24,18 @@
 - Majority rules. If the cluster goes into a "split-brain" situation, the split with more etcd instances will have the true state. 
 - Usually there is one "leader" that handles requests and coordinates updates to cluster state.
 - The side with minority becomes read only until all instances are synced back up to a new state.
+
+### API Server
+- A RESTful API that can perform CRUD operations on the etcd.
+- An interface for querying and modifying the cluster state.
+- `kubectl` is one of the clients we are familiar with using to communicate to the apiserver.
+- A client request goes through 4 main stages.
+	- Authentication: Figures out who you are.
+	- Authorization: Figures out if you can do what you want.
+	- Admission Control: Modify resources for different reasons, like init missing fields or overriding them.
+
+>![[Pasted image 20240609094141.png]]
+
+- The API server is _observed_ by other components. So changes to a resource by the API server may alert another resource that is interested in that change.
+- For instance, if a resource is created, changed or deleted, the control plane component is notified.
+- Every time an object is updated, the server sends the new version of the object to all connected clients that are subscribed to it.
