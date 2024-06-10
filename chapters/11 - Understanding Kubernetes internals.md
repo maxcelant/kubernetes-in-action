@@ -39,3 +39,12 @@
 - The API server is _observed_ by other components. So changes to a resource by the API server may alert another resource that is interested in that change.
 - For instance, if a resource is created, changed or deleted, the control plane component is notified.
 - Every time an object is updated, the server sends the new version of the object to all connected clients that are subscribed to it.
+
+### Scheduler
+
+### Controllers Running in the Controller Manager
+- The controllers do the job of converging to the desired state as specified in the resources deployed through the API server.
+- There is a controller for each resource, to basically manage it.
+- ★ Resources are _descriptions_ of what should be running in the cluster, Controllers are the _active_ kubernetes components that perform the actual work as a result of the deployed resources.
+- Each controller subscribes to the API server for the resources they are responsible for.
+- 
