@@ -1,4 +1,4 @@
-Sure, let's walk through an example where you create a ReplicaSet named `foo` that requires 3 replicas (pods) named `bar`. Here's what the `ReplicaSetController` would do:
+Let's walk through an example where you create a ReplicaSet named `foo` that requires 3 replicas (pods) named `bar`. Here's what the `ReplicaSetController` would do:
 
 ### Step-by-Step Process
 
