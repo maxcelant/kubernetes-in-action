@@ -1,5 +1,10 @@
 ### Summary
-
+- The control plane consists of etcd, API server, scheduler, and controller manager, while worker nodes have kubelet, kube-proxy, and container runtime.
+- etcd is a fast, consistent, distributed key-value store accessed only by the API server using the RAFT algorithm.
+- The API server provides a RESTful interface for CRUD operations on etcd and handles client requests through authentication, authorization, and admission control.
+- The scheduler assigns pods to nodes based on resource availability and affinity, while kubelet deploys and manages these pods on each node.
+- kube-proxy manages iptables rules for service traffic routing, and CNI plugins enable node-to-node communication.
+- Pods communicate through a NAT-less network set up by CNI plugins, using virtual ethernet pairs and network bridges on each node.
 
 ### Architecture
 - On control plane:

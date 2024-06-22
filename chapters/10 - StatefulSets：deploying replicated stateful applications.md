@@ -1,5 +1,8 @@
 ### Summary
-
+- StatefulSets solve the problem of managing unique, stateful pods with stable names and persistent storage, allowing replication.
+- Stateless instances are replaceable like cattle, while stateful instances are unique like pets, needing consistent identity.
+- Headless services provide unique DNS entries for each pod, enabling direct connections and communication.
+- Persistent volume claims ensure data persistence, preventing loss during scaling or pod deletion.
 
 ### Problem Statement
 - How do you create pods that have independent state and their own storage volumes, but can still be replicated by a replicaset?
