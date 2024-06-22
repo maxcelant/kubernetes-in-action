@@ -114,4 +114,18 @@
 - It's also worth noting that each node has a certain IP range for its pods so that there is no overlap.
 
 ### Container Network Interface (CNI)
-- 
+- They are the layer of network that allows for node-to-node communication.
+
+### How Services are implemented
+- The service IP isn't real. Its just used by the iptables to know "when you see IP A, re-route that to pod IPs B-Z". That's why it isn't pingable.
+- kube-proxy uses iptables rules to redirect packets destined for the service IP and reroute them to one of the pod ips backing the service.
+
+>![[Pasted image 20240622133945.png]]
+
+### Running highly available clusters
+- Leader election means that one of them is doing stuff while the others are inactive.
+- It can also mean that one is performing the writes while the others are readonly.
+- Its normal to have multiple instances of the control plane, with only one being active.
+- They choose who is leader by racing to see who is the first to put that title in their `metadata.annotations`.
+- It uses [[Optimistic Concurrency|optimistic concurrency]] to do this safely.
+
