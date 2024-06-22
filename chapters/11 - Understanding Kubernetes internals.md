@@ -51,6 +51,7 @@
 - There is a controller for each resource, to basically manage it.
 - ★ "Resources are _descriptions_ of what should be running in the cluster, Controllers are the **_active_** kubernetes components that perform the actual work as a result of the deployed resources."
 - Each controller subscribes to the API server for the resources they are responsible for. (Using "watch" mechanism).
+- Keep in mind that controllers post the api server the same way a user would.
 
 ### Controllers
 - **ReplicaSet Controller**: It sees that the desired pod state is not met, it creates new Pod manifests and posts them to the API server. Then it lets the scheduler and kubelet do their jobs.
@@ -80,3 +81,37 @@
 - Watches for changes in ingress, services, and endpoints resources and updates the config of the proxy server (e.g. nginx) accordingly.
 - It does **not** involve iptables, the reverse proxy handles the traffic in this case.
 - It routes directly to the Pods and does not go through services at all.
+
+### Event resource
+- The control plane and kubelet emit Events.
+- `kubectl get events --watch` to retrieve events as they occur.
+
+### Understanding what a running Pod is
+- A "pause" container is created when a Pod is created on a Node.
+- This container is what holds all the containers of a Pod together!
+- It serves as an infrastructure container so that the containers of a Pod share the same network and [[Linux Namespace|linux namespace]].
+- The lifecycle of this Pod is tied to that of the other containers in the Pod.
+
+### Inter-pod networking
+- It's [[NAT]]-less and each Pod gets its own unique IP address.
+- This is setup by a Container Network Interface (CNI) plugin.
+- For communication between Pods to work, the IPs must remain consistent, hence the NAT-less.
+- Pods talking to outside services does have NAT.
+- Pods on a node are connected to the same bridge through **_virtual ethernet interface pairs_**.
+
+>![[Pasted image 20240622132025.png]]
+
+- One interface of the pair remains in the host's namespace (node) listed `vethXXXX`. The other is moved into the "pause" container's networking namespace and renamed `eth0`.
+- These work like two ends of a pipe.
+- The interface of the host's network namespace is attached to a network bridge.
+- So if pod A sends a network packet to pod B, the packet first goes through pod A’s veth pair to the bridge and then through pod B’s veth pair. All containers on a node are connected to the same bridge, which means they can all communicate with each other.
+- For each pod on a node, there is one network interface (the host end of the veth pair) in the host's network namespace that connects to the network bridge.
+
+>![[Pasted image 20240622132855.png]]
+
+- Connecting between nodes means connecting the node bridge to the physical network adapter of the node.
+- Then the connection travels "over the wire" to the other node.
+- It's also worth noting that each node has a certain IP range for its pods so that there is no overlap.
+
+### Container Network Interface (CNI)
+- 
