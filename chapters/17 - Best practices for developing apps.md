@@ -80,4 +80,16 @@ spec:
 - You can copy logs to your local using `k cp foo-pod:/var/log/foo.log foo.log`
 
 ### Best practices for development and testing
+- You can connect to a backend service using those environment variables to find the service. If you need it on the outside, you can use a `NodePort` to connect from outside -> inside.
+- Run `kubectl proxy` on your local machine, run your app locally, and it should be ready to talk to your local `kubectl proxy`.
+
+### Using Minikube
+- Use `minikube mount` to mount your local filesystem into the minikube vm.
+- You can copy local docker images to the minikube vm.
+
+```bash
+$ docker save <image> | (eval $(minikube docker-env) && docker load)
+```
+
+- Just make sure the `imagePullPolicy` in your pod spec isn't set to `Always`.
 - 
