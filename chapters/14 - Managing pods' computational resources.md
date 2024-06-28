@@ -1,4 +1,9 @@
 ### Summary
+- You can give max and mins for cpu and memory resources in a cluster.
+- Quality of Service classes categorize your pods in a "to-kill" priority.
+- LimitRange resources give resource mins and maxes for newly created pods in a namespace.
+- ResourceQuota set hard resource limits (as well as other limits) for the whole namespace. 
+- Pod resource monitoring is done by cAdvisor to Heapster.
 
 ### Requesting Resources
 - The _minimum_ amount of resources your pod needs, not the _max_.
